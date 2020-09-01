@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  ToDoList
 //
-//  Created by yuma fujita on 2020/09/02.
+//  Created by Nancy on 2020/09/02.
 //  Copyright © 2020 Swift-Beginners. All rights reserved.
 //
 
