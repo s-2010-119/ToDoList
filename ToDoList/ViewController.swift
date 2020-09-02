@@ -34,9 +34,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // 追記：インスタンスの生成
-        _ = UserDefaults.standard
-
+        // 追記：データ読み込み
+        if let storedToDoList = userDefaults.array(forKey: "toDoList") as? [String] {
+            toDoList.append(contentsOf: storedToDoList)
+        }
     }
 
     @IBAction func addButtonAction(_ sender: Any) {
@@ -51,8 +52,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         return self.alert(title: "エラー", message: "ToDoを入力してください")
                     }
                 
-                self.toDoList.insert(textField.text!, at: 0)
-                self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.right)
+                self.toDoList.append(textField.text!)
+                self.tableView.insertRows(at: [IndexPath(row: self.toDoList.count - 1, section: 0)], with: .none)
                 
             // 追記：追加したToDoを保存
             self.userDefaults.set(self.toDoList, forKey: "toDoList")
