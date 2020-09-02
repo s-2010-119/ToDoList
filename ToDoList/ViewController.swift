@@ -72,6 +72,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ④追加：セルの中身を設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath)
+        //複数行表示
+        cell.textLabel?.numberOfLines = 0
+        
         let toDoTitle = toDoList[indexPath.row]
         cell.textLabel?.text = toDoTitle
         return cell
